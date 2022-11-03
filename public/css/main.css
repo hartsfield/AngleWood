@@ -1,7 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@900&display=swap');
 * {
   padding: 0;
   margin: 0;
-  font-family: sans;
+  font-family: 'Cinzel', serif;
 }
 
 body, html {
@@ -27,11 +28,11 @@ body, html {
     z-index: 100;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@900&display=swap');
 .container {
   position: relative;
   text-align: center;
   color: white;
+  font-family: 'Cinzel', serif;
 }
 
 .centered {
