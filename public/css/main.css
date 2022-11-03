@@ -27,6 +27,7 @@ body, html {
     z-index: 100;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@900&display=swap');
 .container {
   position: relative;
   text-align: center;
@@ -39,8 +40,10 @@ body, html {
   left: 50%;
   transform: translate(-50%, -50%);
   font-style: italic;
-  font-family: 'Arial Black';
   color: lightblue;
+  font-family: 'Cinzel', serif;
+  font-weight: 900;
+  font-size: 1.5em;
 }
 
 
