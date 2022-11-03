@@ -20,3 +20,10 @@
 //   }));
 // }
 
+function showMenu() {
+        document.getElementById("menu").style.display = "unset";
+}
+
+function hideMenu() {
+        document.getElementById("menu").style.display = "none";
+}

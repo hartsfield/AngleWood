@@ -48,4 +48,53 @@ body, html {
   width: 100%;
 }
 
+.menuButt {
+        position: fixed;
+        top: 1em;
+        right: 1em;
+        z-index: 1;
+        cursor: pointer;
+}
+
+.menuButt > li:nth-child(odd) {
+  background-color: white; 
+}
+
+.menuButt > li {
+        width: 3em;
+        height: 0.5em;
+}
+
+.menu {
+        position: fixed;
+        z-index: 333;
+        right: 0;
+        /* width: 60%; */
+        height: 100%;
+        background-color: black;
+        color: white;
+        display: none;
+}
+
+.menu > ul {
+        list-style-type: none;
+        padding: 1em;
+        margin-top: 2em;
+        font-size: 2em;
+}
+
+.menu > ul > li {
+        padding-bottom: 0.5em;
+}
+
+.menu > ul > li > a {
+        text-decoration: none;
+        color: white;
+}
+
+.menuClose {
+        float: right;
+        font-size: 3em;
+        cursor: pointer;
+}
 
