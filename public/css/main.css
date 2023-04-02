@@ -112,7 +112,7 @@ video {
 /* Position the image container (needed to position the left and right arrows) */
 .containerGallery {
   position: relative;
-  max-width: 90em;
+  /* max-width: 90em; */
 }
 
 /* Hide the images by default */
