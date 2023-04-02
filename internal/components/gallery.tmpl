@@ -1,0 +1,154 @@
+{{ define "gallery" }}
+  <!-- Container for the image gallery -->
+<div class="containerGallery">
+
+  <!-- Full-width images with number text -->
+  <div class="mySlides">
+    <div class="numbertext">1 / 13</div>
+      <img src="../../public/assets/gallery/1.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">2 / 13</div>
+      <img src="../../public/assets/gallery/2.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">3 / 13</div>
+      <img src="../../public/assets/gallery/3.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">4 / 13</div>
+      <img src="../../public/assets/gallery/4.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">5 / 13</div>
+      <img src="../../public/assets/gallery/5.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">6 / 13</div>
+      <img src="../../public/assets/gallery/6.jpg" style="width:100%">
+  </div>
+  <div class="mySlides">
+    <div class="numbertext">7 / 13</div>
+      <img src="../../public/assets/gallery/7.jpg" style="width:100%">
+  </div>
+  <div class="mySlides">
+    <div class="numbertext">8 / 13</div>
+      <img src="../../public/assets/gallery/8.jpg" style="width:100%">
+  </div>
+  <div class="mySlides">
+    <div class="numbertext">9 / 13</div>
+      <img src="../../public/assets/gallery/9.jpg" style="width:100%">
+  </div>
+  <div class="mySlides">
+    <div class="numbertext">10 / 13</div>
+      <img src="../../public/assets/gallery/10.jpg" style="width:100%">
+  </div>
+  <div class="mySlides">
+    <div class="numbertext">11 / 13</div>
+      <img src="../../public/assets/gallery/11.jpg" style="width:100%">
+  </div>
+  <div class="mySlides">
+    <div class="numbertext">12 / 13</div>
+      <video src="../../public/assets/gallery/12.mp4" style="width:100%">
+  </div>
+  <div class="mySlides">
+    <div class="numbertext">13 / 13</div>
+      <video src="../../public/assets/gallery/13.mp4" style="width:100%">
+  </div>
+
+
+
+  <!-- Next and previous buttons -->
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+  <!-- Image text -->
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+  <!-- Thumbnail images -->
+  <div class="row">
+    <div class="column">
+      <img class="demo cursor" src="../../public/assets/gallery/1.jpg" onclick="currentSlide(1)" alt="The Woods">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="../../public/assets/gallery/2.jpg" onclick="currentSlide(2)" alt="Cinque Terre">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="../../public/assets/gallery/3.jpg" onclick="currentSlide(3)" alt="Mountains and fjords">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="../../public/assets/gallery/4.jpg" onclick="currentSlide(4)" alt="Northern Lights">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="../../public/assets/gallery/5.jpg" onclick="currentSlide(5)" alt="Nature and sunrise">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="../../public/assets/gallery/6.jpg" onclick="currentSlide(6)" alt="Snowy Mountains">
+    </div>
+    </div>
+  <div class="row">
+    <div class="column">
+      <img class="demo cursor" src="../../public/assets/gallery/7.jpg" onclick="currentSlide(7)" alt="Snowy Mountains">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="../../public/assets/gallery/8.jpg" onclick="currentSlide(8)" alt="Snowy Mountains">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="../../public/assets/gallery/9.jpg" onclick="currentSlide(9)" alt="Snowy Mountains">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="../../public/assets/gallery/10.jpg" onclick="currentSlide(10)" alt="Snowy Mountains">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="../../public/assets/gallery/11.jpg" onclick="currentSlide(11)" alt="Snowy Mountains">
+    </div>
+    <div class="column">
+      <video class="demo cursor" src="../../public/assets/gallery/12.mp4" onclick="currentSlide(12)" alt="Snowy Mountains">
+    </div>
+    <div class="column">
+      <video class="demo cursor" src="../../public/assets/gallery/13.mp4" onclick="currentSlide(13)" alt="Snowy Mountains">
+    </div>
+
+  </div>
+</div>
+  <script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  console.log("test",n);
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("demo");
+  let captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+  </script>
+{{ end }}
