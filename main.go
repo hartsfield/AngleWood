@@ -24,8 +24,8 @@ func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", home)
 	mux.HandleFunc("/about", about)
-	mux.HandleFunc("/contact", mission)
-	mux.HandleFunc("/mission", contact)
+	mux.HandleFunc("/contact", contact)
+	mux.HandleFunc("/mission", mission)
 	mux.HandleFunc("/gallery", gallery)
 	mux.Handle("/public/", http.StripPrefix("/public/", http.FileServer(http.Dir("public"))))
 
