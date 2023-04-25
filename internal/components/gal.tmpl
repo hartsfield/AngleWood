@@ -1,0 +1,165 @@
+{{ define "gallery" }}
+    <div class="gal" id="gallery">
+      <div class="selectedPic">
+          <img id="selectedPicImg" class="selectedPicImg" src="../../public/assets/gallery/1.jpg">
+      </div>
+        <div class="picList">
+            <div class="picListInner">
+              <div class="prevPic galButt" onclick="prevPic()"><div class="galButtInner">◀</div></div>
+              <div class="galPic"><img onclick="selectPic(0)" class="galPicImg" id="img_1" num="1" src="../../public/assets/gallery/1.jpg" /></div>
+              <div class="galPic"><img onclick="selectPic(1)" class="galPicImg" id="img_2" num="2" src="../../public/assets/gallery/2.jpg" /></div>
+              <div class="galPic"><img onclick="selectPic(2)" class="galPicImg" id="img_3" num="3" src="../../public/assets/gallery/3.jpg" /></div>
+              <div class="galPic"><img onclick="selectPic(3)" class="galPicImg" id="img_4" num="4" src="../../public/assets/gallery/4.jpg" /></div>
+              <div class="galPic"><img onclick="selectPic(4)" class="galPicImg" id="img_5" num="5" src="../../public/assets/gallery/5.jpg" /></div>
+              <div class="galPic"><img onclick="selectPic(5)" class="galPicImg" id="img_6" num="6" src="../../public/assets/gallery/6.jpg" /></div>
+              <div class="nextPic galButt" onclick="nextPic()"><div class="galButtInner">▶</div></div>
+            </div>
+        </div>
+    </div>
+<script>
+var galPicList = [1, 2, 3, 4, 5, 6];
+var selectedPicNum = 0;
+var imgNum = 0;
+
+function nextPic() {
+  if (galPicList[5] == 21 && selectedPicNum == 5) {
+    return;
+  }
+  if (galPicList[5] == 21 && selectedPicNum < 4) {
+    console.log("tewdvfwevrv");
+    selectPic(selectedPicNum + 1);
+  } else {
+    if (selectedPicNum > 2 && selectedPicNum < 4 || galPicList[5] < 21) {
+      galPicList = galPicList.map(function(val){return ++val;});
+      selectedPicNum = selectedPicNum - 1;
+    }
+    var slides = document.getElementsByClassName("galPicImg");
+    for (var i = 0; i < slides.length; i++) {
+      slides[i].src = "../../public/assets/gallery/" + galPicList[i] + ".jpg";
+    }
+    selectPic(selectedPicNum + 1);
+  }
+}
+
+function prevPic() {
+  if (selectedPicNum < 0) {
+    return;
+  }
+
+  console.log(galPicList[0], selectedPicNum)
+  if (galPicList[0] == 1 && selectedPicNum >= 0) {
+    selectPic(selectedPicNum -= 1);
+  } else {
+    if (selectedPicNum > 2 && selectedPicNum < 18) {
+      galPicList = galPicList.map(function(val){return --val;});
+      var slides = document.getElementsByClassName("galPicImg");
+      for (var i = 0; i < slides.length; i++) {
+        slides[i].src = "../../public/assets/gallery/" + galPicList[i] + ".jpg";
+      }
+      selectedPicNum = selectedPicNum + 1;
+
+    } else {
+      galPicList = galPicList.map(function(val){return --val;});
+      var slides = document.getElementsByClassName("galPicImg");
+      for (var i = 0; i < slides.length; i++) {
+        slides[i].src = "../../public/assets/gallery/" + galPicList[i] + ".jpg";
+      }
+    }
+    selectPic(selectedPicNum -= 1);
+  }
+}
+
+selectPic(0);
+function selectPic(imgNum) {
+  for (var i = 0; i < galPicList.length; i++) {
+    document.getElementById("img_"+(i+1)).style.border = "unset";
+  }
+  if (imgNum > 5) {
+    imgNum = 5;
+  }
+  if (imgNum <= 0) {
+    imgNum = 0;
+  }
+  document.getElementById("img_"+ (imgNum+1)).style.border ="2px solid gold";
+  selectedPic = document.getElementById("selectedPicImg"); 
+  selectedPic.src = "../../public/assets/gallery/" + galPicList[imgNum] + ".jpg";
+  selectedPicNum = imgNum;
+}
+</script>
+<style>
+.gal {
+  width: 75%;
+  height: 75%;
+  margin-left: 12.5%;
+  margin-bottom: 10em;
+  margin-top: 3em;
+}
+
+.picList {
+  display: flex;
+}
+.picListInner {
+  display: inline-flex;
+  max-height: 7em;
+  width: 100%;
+    height: 100%;
+      min-height: 7em;
+}
+.selectedPicImg {
+  max-width: 100%;
+      height: 100%;
+        width: 100%;
+}
+
+.galPicImg {
+  width: 100%;
+}
+.galPic {
+  display: inline-flex;
+}
+.galButtInner {
+      position: relative;
+  left: 50%;
+  top: 75%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+      user-select: none;
+}
+.galButt {
+  width: 65%;
+  background: black;
+  color: white;
+  display: inline-flex;
+  font-size: 2em;
+}
+.selectedPic {
+      height: 100%;
+    text-align: center;
+}
+.nextPic {
+}
+
+
+@media screen and (orientation:portrait) {
+  .gal {
+    width: 100%;
+    min-width: 100%;
+    margin: unset;
+    max-height: 55%;
+    margin-bottom: 10em;
+    margin-top: 5em;
+  }
+  .picListInner {
+    min-height: 4em;
+    max-height: 4em;
+  }
+  .galButt {
+    width: 280%;
+  }
+  .galButtInner {
+    top: 64%;
+  }
+}
+
+</style>
+{{end}}

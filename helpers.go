@@ -11,3 +11,7 @@ func genPostID(length int) (ID string) {
 	}
 	return
 }
+
+func makeGallery() {
+
+}

@@ -10,8 +10,9 @@ import (
 )
 
 type page struct {
-	Title string
-	Body  string
+	Title   string
+	Body    string
+	Gallery []string
 }
 
 var (

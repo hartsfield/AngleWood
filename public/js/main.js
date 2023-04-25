@@ -28,4 +28,14 @@ function hideMenu() {
         document.getElementById("menu").style.display = "none";
 }
 
+function jumpTo(eid) {
+    var jump = document.getElementById(eid);
+jump.scrollIntoView({
+            behavior: 'auto',
+            block: 'center',
+            inline: 'center'
+});
+    hideMenu();
+}
+
 
