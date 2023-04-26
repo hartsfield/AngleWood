@@ -1,102 +1,203 @@
 {{ define "gallery" }}
     <div class="gal" id="gallery">
-      <div class="selectedPic">
-          <img id="selectedPicImg" class="selectedPicImg" src="../../public/assets/gallery/1.jpg">
+      <div class="selectedPic" id="selectedPicOuter">
+          <img id="selectedPicImg" class="selectedPicImg" src="../../public/assets/gallery/01.jpg">
       </div>
         <div class="picList">
-            <div class="picListInner">
-              <div class="prevPic galButt" onclick="prevPic()"><div class="galButtInner">◀</div></div>
-              <div class="galPic"><img onclick="selectPic(0)" class="galPicImg" id="img_1" num="1" src="../../public/assets/gallery/1.jpg" /></div>
-              <div class="galPic"><img onclick="selectPic(1)" class="galPicImg" id="img_2" num="2" src="../../public/assets/gallery/2.jpg" /></div>
-              <div class="galPic"><img onclick="selectPic(2)" class="galPicImg" id="img_3" num="3" src="../../public/assets/gallery/3.jpg" /></div>
-              <div class="galPic"><img onclick="selectPic(3)" class="galPicImg" id="img_4" num="4" src="../../public/assets/gallery/4.jpg" /></div>
-              <div class="galPic"><img onclick="selectPic(4)" class="galPicImg" id="img_5" num="5" src="../../public/assets/gallery/5.jpg" /></div>
-              <div class="galPic"><img onclick="selectPic(5)" class="galPicImg" id="img_6" num="6" src="../../public/assets/gallery/6.jpg" /></div>
-              <div class="nextPic galButt" onclick="nextPic()"><div class="galButtInner">▶</div></div>
+            <div class="picListInner" id="picListInner">
+              <div class="prevPic galButt" id="galButtPrev" onclick="prevPic()"><div class="galButtInner">◀</div></div>
+              <div class="galPic"></div>
+              <div class="galPic"></div>
+              <div class="galPic"></div>
+              <div class="galPic"></div>
+              <div class="galPic"></div>
+              <div class="galPic"></div>
+              <div class="nextPic galButt" id="galButtNext" onclick="nextPic()"><div class="galButtInner">▶</div></div>
             </div>
         </div>
     </div>
 <script>
-var galPicList = [1, 2, 3, 4, 5, 6];
-var selectedPicNum = 0;
-var imgNum = 0;
-
-function nextPic() {
-  if (galPicList[5] == 21 && selectedPicNum == 5) {
-    return;
-  }
-  if (galPicList[5] == 21 && selectedPicNum < 4) {
-    console.log("tewdvfwevrv");
-    selectPic(selectedPicNum + 1);
-  } else {
-    if (selectedPicNum > 2 && selectedPicNum < 4 || galPicList[5] < 21) {
-      galPicList = galPicList.map(function(val){return ++val;});
-      selectedPicNum = selectedPicNum - 1;
-    }
-    var slides = document.getElementsByClassName("galPicImg");
-    for (var i = 0; i < slides.length; i++) {
-      slides[i].src = "../../public/assets/gallery/" + galPicList[i] + ".jpg";
-    }
-    selectPic(selectedPicNum + 1);
-  }
-}
-
-function prevPic() {
-  if (selectedPicNum < 0) {
-    return;
-  }
-
-  console.log(galPicList[0], selectedPicNum)
-  if (galPicList[0] == 1 && selectedPicNum >= 0) {
-    selectPic(selectedPicNum -= 1);
-  } else {
-    if (selectedPicNum > 2 && selectedPicNum < 18) {
-      galPicList = galPicList.map(function(val){return --val;});
-      var slides = document.getElementsByClassName("galPicImg");
-      for (var i = 0; i < slides.length; i++) {
-        slides[i].src = "../../public/assets/gallery/" + galPicList[i] + ".jpg";
+  var gallery = {{ .Gallery }};
+  var selectedNumber = 0;
+  var leader = 0;
+  medias = document.getElementsByClassName("galPic");
+  
+  function moveMedia(mediaNum) {
+    for (var i=0; i<medias.length; i++) {
+      medias[i].innerHTML = "";
+      s = gallery[i + mediaNum];
+      gbp = document.getElementById("galButtPrev");
+      if (s.slice(s.length - 3, s.length) == "mp4") {
+        vid = document.createElement("video");
+        vid.id = "media_" + s;
+        vid.className = "galPicImg";
+        vid.src = '../../public/assets/gallery/' + gallery[i + mediaNum];
+        medias[i].appendChild(vid);
+        vid.setAttribute("onclick","selectMedia('vid', '" + gallery[i + mediaNum] + "')" );
+      } else {
+        img = document.createElement("img");
+        img.id = "media_" + s;
+        img.className = "galPicImg";
+        img.src = '../../public/assets/gallery/' + gallery[i + mediaNum];
+        medias[i].appendChild(img);
+        img.setAttribute("onclick","selectMedia('img', '" + gallery[i + mediaNum] + "')" );
       }
-      selectedPicNum = selectedPicNum + 1;
+      medias[i].style.border = "unset";
+    }
+  }
 
+  function nextPic() {
+    if (leader >= gallery.length - 5) {
+      if (selectedNumber < gallery.length && selectedNumber != -1) {
+        selectMedia(findType(selectedNumber + 1), gallery[selectedNumber + 1], "right")
+      }
     } else {
-      galPicList = galPicList.map(function(val){return --val;});
-      var slides = document.getElementsByClassName("galPicImg");
-      for (var i = 0; i < slides.length; i++) {
-        slides[i].src = "../../public/assets/gallery/" + galPicList[i] + ".jpg";
-      }
+      selectMedia(findType(selectedNumber + 1), gallery[selectedNumber + 1], "right")
     }
-    selectPic(selectedPicNum -= 1);
   }
+
+  function prevPic() {
+    if (leader == 0) {
+      if (selectedNumber > 0) {
+             selectMedia(findType(selectedNumber - 1), gallery[selectedNumber - 1], "left")
+      } else {
+             selectMedia(findType(0), gallery[0])
+      }
+    } else {
+     selectMedia(findType(selectedNumber - 1),  gallery[selectedNumber - 1], "left")
+    }
+  }
+
+  function findType(ind) {
+    if (ind > 0 && ind < gallery.length) {
+       s = gallery[ind];
+      if (s.slice(s.length - 3, s.length) == "mp4") {
+        return "vid";
+      }
+      return "img";
+    }
+  }
+
+  function selectMedia(mediaType, src, dir) {
+    submedias = document.getElementsByClassName("galPicImg");
+    for (var i=0; i<submedias.length; i++) {
+      submedias[i].style.border = "unset";
+    }
+    if (src != undefined) {
+      picDiv = document.getElementById("selectedPicOuter");
+      picDiv.innerHTML = "";
+
+      if (dir != undefined) {
+        if (dir == "left") {
+          if (mediaType == "vid") {
+              vid = document.createElement("video");
+              vid.className = "selectedPicImg";
+              vid.src = "../../public/assets/gallery/" + gallery[selectedNumber - 1] ;
+              picDiv.appendChild(vid);
+              vid.play();
+          } else {
+              img = document.createElement("img");
+              img.className = "selectedPicImg";
+              img.src = "../../public/assets/gallery/" + gallery[selectedNumber - 1];
+              picDiv.appendChild(img);
+          }
+          if (leader > 0) {
+          leader = leader - 1;
+          } 
+          moveMedia(leader);
+    document.getElementById("media_" + gallery[selectedNumber - 1]).style.border = "2px solid gold";
+        } else {
+          console.log("right");
+          if (mediaType == "vid") {
+              vid = document.createElement("video");
+              vid.className = "selectedPicImg";
+              vid.src = "../../public/assets/gallery/" + gallery[selectedNumber + 1];
+              picDiv.appendChild(vid);
+              vid.play();
+          } else {
+              img = document.createElement("img");
+              img.className = "selectedPicImg";
+              img.src = "../../public/assets/gallery/" + gallery[selectedNumber + 1];
+              picDiv.appendChild(img);
+          }
+          if (leader < 18) {
+          leader = leader + 1
+          }
+          moveMedia(leader);
+    document.getElementById("media_" + gallery[selectedNumber + 1]).style.border = "2px solid gold";
+        }
+        selectedNumber = gallery.indexOf(src);
+        return;
+      }
+      if (mediaType == "vid") {
+          vid = document.createElement("video");
+          vid.className = "selectedPicImg";
+          vid.src = "../../public/assets/gallery/" + src ;
+          picDiv.appendChild(vid);
+          vid.play();
+    document.getElementById("media_" + src).style.border = "2px solid gold";
+      } else {
+          img = document.createElement("img");
+          img.className = "selectedPicImg";
+          img.src = "../../public/assets/gallery/" + src ;
+          picDiv.appendChild(img);
+    document.getElementById("media_" + src).style.border = "2px solid gold";
+      }
+      selectedNumber = gallery.indexOf(src);
+      }
+  }
+
+picDiv = document.getElementById("selectedPicOuter");
+picDiv.addEventListener('touchstart', function (event) {
+    touchstartX = event.changedTouches[0].screenX;
+    touchstartY = event.changedTouches[0].screenY;
+}, false);
+
+picDiv.addEventListener('touchend', function (event) {
+    touchendX = event.changedTouches[0].screenX;
+    touchendY = event.changedTouches[0].screenY;
+    handleGesture();
+}, false);
+
+
+function handleGesture() {
+    if (touchendX < touchstartX) {
+        console.log('Swiped Left');
+        nextPic();
+    }
+
+    if (touchendX > touchstartX) {
+        console.log('Swiped Right');
+        prevPic();
+    }
+
+    if (touchendY < touchstartY) {
+        console.log('Swiped Up');
+    }
+
+    if (touchendY > touchstartY) {
+        console.log('Swiped Down');
+    }
+
+    if (touchendY === touchstartY) {
+        console.log('Tap');
+    }
 }
 
-selectPic(0);
-function selectPic(imgNum) {
-  for (var i = 0; i < galPicList.length; i++) {
-    document.getElementById("img_"+(i+1)).style.border = "unset";
-  }
-  if (imgNum > 5) {
-    imgNum = 5;
-  }
-  if (imgNum <= 0) {
-    imgNum = 0;
-  }
-  document.getElementById("img_"+ (imgNum+1)).style.border ="2px solid gold";
-  selectedPic = document.getElementById("selectedPicImg"); 
-  selectedPic.src = "../../public/assets/gallery/" + galPicList[imgNum] + ".jpg";
-  selectedPicNum = imgNum;
-}
+
+  moveMedia(0);
 </script>
 <style>
 .gal {
-  width: 75%;
+  width: 50%;
   height: 75%;
-  margin-left: 12.5%;
+  margin-left: 25%;
   margin-bottom: 10em;
   margin-top: 3em;
 }
 
 .picList {
-  display: flex;
+  // display: flex;
 }
 .picListInner {
   display: inline-flex;
@@ -104,6 +205,7 @@ function selectPic(imgNum) {
   width: 100%;
     height: 100%;
       min-height: 7em;
+        justify-content: space-between;
 }
 .selectedPicImg {
   max-width: 100%;
@@ -115,6 +217,7 @@ function selectPic(imgNum) {
   width: 100%;
 }
 .galPic {
+  width: 100%;
   display: inline-flex;
 }
 .galButtInner {
@@ -139,6 +242,10 @@ function selectPic(imgNum) {
 .nextPic {
 }
 
+video::-internal-media-controls-overlay-cast-button {
+    display: none;
+}
+
 
 @media screen and (orientation:portrait) {
   .gal {
@@ -154,7 +261,7 @@ function selectPic(imgNum) {
     max-height: 4em;
   }
   .galButt {
-    width: 280%;
+    width: 100vw;
   }
   .galButtInner {
     top: 64%;

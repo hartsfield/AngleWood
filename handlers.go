@@ -6,7 +6,8 @@ import (
 )
 
 func home(w http.ResponseWriter, r *http.Request) {
-	err := templates.ExecuteTemplate(w, "home.tmpl", &page{Title: "Title", Body: "Hello world"})
+	gal := makeGallery()
+	err := templates.ExecuteTemplate(w, "home.tmpl", gal)
 	if err != nil {
 		fmt.Println(err)
 	}

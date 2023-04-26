@@ -20,6 +20,7 @@ var (
 )
 
 func main() {
+	makeGallery()
 	rand.Seed(time.Now().UTC().UnixNano())
 
 	mux := http.NewServeMux()

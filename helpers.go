@@ -1,6 +1,10 @@
 package main
 
-import "math/rand"
+import (
+	"log"
+	"math/rand"
+	"os"
+)
 
 // genPostID generates a post ID
 func genPostID(length int) (ID string) {
@@ -12,6 +16,14 @@ func genPostID(length int) (ID string) {
 	return
 }
 
-func makeGallery() {
+func makeGallery() (p page) {
+	entries, err := os.ReadDir("./public/assets/gallery/")
+	if err != nil {
+		log.Fatal(err)
+	}
 
+	for _, e := range entries {
+		p.Gallery = append(p.Gallery, e.Name())
+	}
+	return
 }
