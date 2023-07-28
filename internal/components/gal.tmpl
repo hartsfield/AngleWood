@@ -1,7 +1,7 @@
 {{ define "gallery" }}
     <div class="gal" id="gallery">
       <div class="selectedPic" id="selectedPicOuter">
-          <img id="selectedPicImg" class="selectedPicImg" src="../../public/assets/gallery/01.jpg">
+          <img id="selectedPicImg" class="selectedPicImg" src="../../public/assets/gallery/001.jpg">
       </div>
         <div class="picList">
             <div class="picListInner" id="picListInner">
@@ -23,6 +23,7 @@
   medias = document.getElementsByClassName("galPic");
   
   function moveMedia(mediaNum) {
+    console.log("mm::",mediaNum)
     for (var i=0; i<medias.length; i++) {
       medias[i].innerHTML = "";
       s = gallery[i + mediaNum];
@@ -105,6 +106,7 @@
           leader = leader - 1;
           } 
           moveMedia(leader);
+          console.log("media_" + gallery[selectedNumber - 1])
     document.getElementById("media_" + gallery[selectedNumber - 1]).style.border = "2px solid gold";
         } else {
           console.log("right");
@@ -120,7 +122,7 @@
               img.src = "../../public/assets/gallery/" + gallery[selectedNumber + 1];
               picDiv.appendChild(img);
           }
-          if (leader < 26) {
+          if (leader < 205) {
           leader = leader + 1
           }
           moveMedia(leader);

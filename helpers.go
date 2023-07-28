@@ -24,6 +24,7 @@ func makeGallery() (p page) {
 
 	for _, e := range entries {
 		p.Gallery = append(p.Gallery, e.Name())
+		log.Println(e.Name())
 	}
 	return
 }
