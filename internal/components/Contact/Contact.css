@@ -1,2 +1,12 @@
 {{ define "Contact.css" }}
+.section-Contact {
+    text-align: center;
+    font-size: 1.5em;
+}
+.contact-header {
+    margin-bottom: 2em;
+}
+.contact-info > div {
+    margin-bottom: 2em;
+}
 {{end}}

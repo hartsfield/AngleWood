@@ -32,16 +32,10 @@ body, html {
   .section-outer {
     font-size: 1em;
   }
-  .section-Gallery {
-    padding: 0 0;
-}
 }
 @media screen and (orientation:landscape) {
   .section-outer {
     padding: 2em 20%;
-  }
-  .section-Gallery {
-    padding: 2em;
   }
 }
 {{end}}

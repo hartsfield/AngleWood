@@ -57,8 +57,6 @@
         display: inline-flex;
         flex-wrap: nowrap;
         justify-content: space-between;
-        /* align-items: stretch; */
-        /* flex-direction: row; */
     }
 }
 @media screen and (orientation:portrait) {

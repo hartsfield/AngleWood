@@ -40,7 +40,8 @@
         flex-direction: column;
         flex-wrap: nowrap;
         align-items: center;
-        justify-content: flex-start;
+        /* justify-content: flex-start; */
+        justify-content: space-between;
     }
     .splash-logo {
         width: 100%;
@@ -48,6 +49,7 @@
         border-radius: 0;
         background-size: contain;
         background-repeat: no-repeat;
+        background-position: top;
         margin-bottom: -7em;
         opacity: 1;
         animation: none;
