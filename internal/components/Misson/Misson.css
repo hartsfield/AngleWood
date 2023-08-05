@@ -1,2 +1,5 @@
 {{ define "Misson.css" }}
+.mission > ul {
+   list-style-position: inside;
+}
 {{end}}
