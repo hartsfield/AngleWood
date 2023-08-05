@@ -74,8 +74,8 @@
     }
     .nav-portrait {
         position: absolute;
-        background-color: #622b6bc7;
-        color: seashell;
+        background-color: gold;
+        color: black;
         height: 100vh;
         padding: 1em 2em 1em 1em;
         font-size: 1.5em;
@@ -88,7 +88,7 @@
         text-align: right;
         cursor: pointer;
         padding: 0.2em;
-        color: #ffd0ec;
+        color: blackjack;
     }
     .nav-portrait > ul > li:hover {
         background: #c96100;
@@ -97,7 +97,8 @@
         text-align: center;
         width: 100%;
         margin-bottom: 2em;
-        background: #c96100;
+        background: black;
+        color: gold;
     }
 }
 @keyframes navbar-load {
