@@ -1,0 +1,2 @@
+{{ define "autosplash.js" }}
+{{end}}

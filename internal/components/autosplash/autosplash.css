@@ -1,0 +1,51 @@
+{{ define "autosplash.css"}}
+.splash-inner {
+    background-image: url(public/media/skyline.jpg);
+    background-size: cover;
+    background-position: bottom;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+}
+.splash-logo {
+    background-image: url(public/assets/ai.png);
+    background-size: cover;
+    height: 35em;
+    width: 55em;
+    animation: 600ms linear scalein;
+    border-radius: 0.5em;
+    opacity: 0.8;
+}
+.logo-sub {
+    background-color: gold;
+    color: black;
+    width: calc(55em - 1em);
+    border-radius: 0.3em;
+    padding: 0.5em;
+    margin-top: 1em;
+    text-align: center;
+   /* text-align-last: justify; */
+}
+@keyframes scalein {
+  0% {transform: scale(0);}
+  // 100% {transform: scale(1);}
+}
+
+@media screen and (orientation:portrait) {
+.splash-logo {
+    position: absolute;
+    max-width: 100%;
+    height: 40vh;
+    top: 3em;
+    left: 0;
+    border-radius: 0;
+}
+.logo-sub {
+    max-width: calc(100% - 1em);
+    border-radius: 0;
+}
+}
+{{end}}

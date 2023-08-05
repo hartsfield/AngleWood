@@ -1,0 +1,38 @@
+{{ define "autonav.tmpl" }}
+<div class="navbar-outer">
+  <div class="logo-nav" onclick="window.location = window.location.origin">{{ .CompanyName }}</div>
+
+  <div class="nav-landscape">
+    <ul>
+    
+      <li onclick="jumpTo('section-Misson')">Misson</li>
+<li onclick="jumpTo('section-Gallery')">Gallery</li>
+<li onclick="jumpTo('section-About')">About</li>
+<li onclick="jumpTo('section-Contact')">Contact</li>
+
+    </ul>
+  </div>
+
+  <div class="nav-portrait" id="nav-portrait">
+    <div class="nav-portrait-logo">{{ .CompanyName }}</div>
+    <ul>
+    
+<li onclick="jumpTo('section-Misson')">Misson</li>
+<li onclick="jumpTo('section-Gallery')">Gallery</li>
+<li onclick="jumpTo('section-About')">About</li>
+<li onclick="jumpTo('section-Contact')">Contact</li>
+
+    </ul>
+  </div>
+
+  <div class="ham-outer" onclick="showNavPortrait()">
+    <div class="hamburger"></div>
+    <div class="hamburger"></div>
+    <div class="hamburger"></div>
+  </div>
+
+</div>
+
+<style>{{ template "autonav.css" }}</style>
+<script>{{ template "autonav.js"}}</script>
+{{end}}

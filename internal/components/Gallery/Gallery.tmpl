@@ -1,0 +1,23 @@
+{{ define "Gallery.tmpl" }}
+<div class="section-outer Gallery-outer section-Gallery" id="section-Gallery">
+    <div class="gal" id="gallery">
+        <div class="selectedPic" id="selectedPicOuter">
+            <img id="selectedPicImg" class="selectedPicImg" src="../../public/assets/gallery/001.jpg">
+        </div>
+        <div class="picList">
+            <div class="picListInner" id="picListInner">
+                <div class="prevPic galButt" id="galButtPrev" onclick="prevPic()"><div class="galButtInner">◀</div></div>
+                <div class="galPic"></div>
+                <div class="galPic"></div>
+                <div class="galPic"></div>
+                <div class="galPic"></div>
+                <div class="galPic"></div>
+                <div class="galPic"></div>
+                <div class="nextPic galButt" id="galButtNext" onclick="nextPic()"><div class="galButtInner">▶</div></div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>{{ template "Gallery.css"  . }}</style>
+<script>{{ template "Gallery.js" . }}</script>
+{{end}}
