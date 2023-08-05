@@ -1,2 +1,5 @@
 {{ define "About.css" }}
+p {
+    margin: 1em;
+}
 {{end}}
