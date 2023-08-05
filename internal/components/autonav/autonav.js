@@ -1,7 +1,8 @@
 {{ define "autonav.js"}}
 let np = document.getElementById("nav-portrait");
 np.style.position = "absolute";
-np.style.right = "-" + np.offsetWidth + "px";
+np.style.right = "-" + np.offsetWidth + "0px";
+
 function showNavPortrait() {
     np.style.right = 0;
     setTimeout(function () {
