@@ -33,7 +33,7 @@ body, html {
     font-size: 1em;
   }
   .section-Gallery {
-    padding: 2em 0;
+    padding: 0 0;
 }
 }
 @media screen and (orientation:landscape) {

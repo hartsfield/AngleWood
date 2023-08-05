@@ -14,8 +14,8 @@
 
   width: 50%;
   /* margin-left: 25%; */
-  margin-bottom: 3em;
-  margin-top: 3em;
+  /* margin-bottom: 3em; */
+  /* margin-top: 3em; */
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -35,16 +35,20 @@
 .selectedPicImg {
   max-width: 100%;
   max-height: 60vh;
+    border-radius: 0.2em;
   /* height: 100%; */
   /*   width: 100%; */
 }
 
 .galPicImg {
   width: 100%;
+  border-radius: 0.2em;
 }
 .galPic {
   width: 100%;
   display: inline-flex;
+  margin: 4px 2px;
+  border-radius: 0.2em;
 }
 .galButtInner {
   position: relative;
@@ -60,6 +64,9 @@
   color: white;
   display: inline-flex;
   font-size: 2em;
+
+  border-radius: 0.1em;
+  margin: 4px 2px;
 }
 .selectedPic {
   height: 60vh;
@@ -69,6 +76,9 @@
   flex-wrap: nowrap;
   justify-content: flex-end;
   align-items: center;
+  border-radius: 0.3em;
+  background-image: url(public/media/camera.png);
+  background-size: 10%;
 }
 .nextPic {
 }
@@ -84,8 +94,8 @@ video::-internal-media-controls-overlay-cast-button {
     min-width: 100%;
     margin: unset;
     max-height: 55%;
-    margin-bottom: 10em;
-    margin-top: 5em;
+    /* margin-bottom: 10em; */
+    /* margin-top: 5em; */
   }
   .picListInner {
     min-height: 4em;
@@ -96,6 +106,12 @@ video::-internal-media-controls-overlay-cast-button {
   }
   .galButtInner {
     top: 64%;
+  }
+  .selectedPic {
+    border-radius: 0;
+  }
+  .selectedPicImg {
+    border-radius: 0;
   }
 }
 

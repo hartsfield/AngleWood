@@ -52,6 +52,12 @@ function prevPic() {
     }
 }
 
+// function changeSelectedPicOuter(imgID) {
+//     var spo = document.getElementById("selectedPicOuter");
+//     spo.style.backgroundImage = "url(" + imgID + ")";
+//     spo.style.backgroundSize = "10%";
+// }
+
 function findType(ind) {
     if (ind > 0 && ind < gallery.length) {
         s = gallery[ind];
@@ -83,13 +89,13 @@ function selectMedia(mediaType, src, dir) {
                     img = document.createElement("img");
                     img.className = "selectedPicImg";
                     img.src = imglocation + gallery[selectedNumber - 1];
+            // changeSelectedPicOuter(img.src);
                     picDiv.appendChild(img);
                 }
                 if (leader > 0) {
                     leader = leader - 1;
                 } 
                 moveMedia(leader);
-                console.log("media_" + gallery[selectedNumber - 1])
                 document.getElementById("media_" + gallery[selectedNumber - 1]).style.border = "2px solid gold";
             } else {
                 console.log("right");
@@ -103,6 +109,7 @@ function selectMedia(mediaType, src, dir) {
                     img = document.createElement("img");
                     img.className = "selectedPicImg";
                     img.src = imglocation + gallery[selectedNumber + 1];
+            // changeSelectedPicOuter(img.src);
                     picDiv.appendChild(img);
                 }
                 if (leader < 210) {
@@ -125,6 +132,7 @@ function selectMedia(mediaType, src, dir) {
             img = document.createElement("img");
             img.className = "selectedPicImg";
             img.src = imglocation + src ;
+            // changeSelectedPicOuter(img.src);
             picDiv.appendChild(img);
             document.getElementById("media_" + src).style.border = "2px solid gold";
         }
