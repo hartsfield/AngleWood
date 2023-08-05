@@ -1,7 +1,7 @@
 {{ define "Contact.css" }}
 .section-Contact {
     text-align: center;
-    font-size: 1.5em;
+    font-size: 2.5em;
 }
 .contact-header {
     margin-bottom: 2em;
