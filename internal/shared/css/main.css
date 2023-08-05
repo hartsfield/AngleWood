@@ -28,7 +28,11 @@ body, html {
   background-color: whitesmoke;
 }
 
-@media screen and (orientation:portrait) {}
+@media screen and (orientation:portrait) {
+  .section-outer {
+    font-size: 1em;
+  }
+}
 @media screen and (orientation:landscape) {
   .section-outer {
     padding: 2em 20%;
