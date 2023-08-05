@@ -27,25 +27,32 @@
     padding: 0.5em;
     margin-top: 1em;
     text-align: center;
-   /* text-align-last: justify; */
+    /* text-align-last: justify; */
 }
 @keyframes scalein {
-  0% {transform: scale(0);}
-  // 100% {transform: scale(1);}
+    0% {transform: scale(0);}
+    // 100% {transform: scale(1);}
 }
 
 @media screen and (orientation:portrait) {
-.splash-logo {
-    position: absolute;
-    max-width: 100%;
-    height: 40vh;
-    top: 3em;
-    left: 0;
-    border-radius: 0;
-}
-.logo-sub {
-    max-width: calc(100% - 1em);
-    border-radius: 0;
-}
+    .splash-inner {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .splash-logo {
+        width: 100%;
+        margin-top: 3em;
+        border-radius: 0;
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-bottom: -15em;
+    }
+    .logo-sub {
+        max-width: calc(100% - 1em);
+        border-radius: 0;
+    }
 }
 {{end}}
