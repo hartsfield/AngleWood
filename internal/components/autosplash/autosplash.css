@@ -49,6 +49,8 @@
         background-size: contain;
         background-repeat: no-repeat;
         margin-bottom: -15em;
+        opacity: 1;
+        animation: none;
     }
     .logo-sub {
         max-width: calc(100% - 1em);
