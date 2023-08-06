@@ -26,7 +26,7 @@ function moveMedia(mediaNum) {
             medias[i].appendChild(img);
             img.setAttribute("onclick","selectMedia('img', '" + gallery[i + mediaNum] + "')" );
         }
-        medias[i].style.border = "unset";
+        medias[i].parentNode.style.border = "unset";
     }
 }
 
@@ -71,7 +71,7 @@ function findType(ind) {
 function selectMedia(mediaType, src, dir) {
     submedias = document.getElementsByClassName("galPicImg");
     for (var i=0; i<submedias.length; i++) {
-        submedias[i].style.border = "unset";
+        submedias[i].parentNode.style.border = "unset";
     }
     if (src != undefined) {
         picDiv = document.getElementById("selectedPicOuter");
@@ -96,7 +96,7 @@ function selectMedia(mediaType, src, dir) {
                     leader = leader - 1;
                 } 
                 moveMedia(leader);
-                document.getElementById("media_" + gallery[selectedNumber - 1]).style.border = "2px solid gold";
+                document.getElementById("media_" + gallery[selectedNumber - 1]).parentNode.style.border = "2px solid gold";
             } else {
                 console.log("right");
                 if (mediaType == "vid") {
@@ -116,7 +116,7 @@ function selectMedia(mediaType, src, dir) {
                     leader = leader + 1
                 }
                 moveMedia(leader);
-                document.getElementById("media_" + gallery[selectedNumber + 1]).style.border = "2px solid gold";
+                document.getElementById("media_" + gallery[selectedNumber + 1]).parentNode.style.border = "2px solid gold";
             }
             selectedNumber = gallery.indexOf(src);
             return;
@@ -127,14 +127,14 @@ function selectMedia(mediaType, src, dir) {
             vid.src = imglocation + src ;
             picDiv.appendChild(vid);
             vid.play();
-            document.getElementById("media_" + src).style.border = "2px solid gold";
+            document.getElementById("media_" + src).parentNode.style.border = "2px solid gold";
         } else {
             img = document.createElement("img");
             img.className = "selectedPicImg";
             img.src = imglocation + src ;
             // changeSelectedPicOuter(img.src);
             picDiv.appendChild(img);
-            document.getElementById("media_" + src).style.border = "2px solid gold";
+            document.getElementById("media_" + src).parentNode.style.border = "2px solid gold";
         }
         selectedNumber = gallery.indexOf(src);
     }
