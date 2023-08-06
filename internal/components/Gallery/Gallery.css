@@ -14,7 +14,7 @@
   /* margin-bottom: 10em; */
   /* margin-top: 3em; */
 
-  width: 50%;
+  width: 80%;
   /* margin-left: 25%; */
   /* margin-bottom: 3em; */
   /* margin-top: 3em; */
@@ -95,6 +95,7 @@
   /* background-image: url(public/media/camera.png); */
   /* background-size: 10%; */
     height: 14em;
+    max-height: 14em;
     text-align: center;
     display: flex;
     flex-direction: column;
