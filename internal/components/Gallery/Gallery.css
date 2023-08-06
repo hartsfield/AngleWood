@@ -5,6 +5,7 @@
   flex-wrap: nowrap;
   align-items: center;
   padding: 2em;
+  height: fit-content;
 }
 .gal {
   /* width: 50%; */
