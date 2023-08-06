@@ -113,10 +113,10 @@ video::-internal-media-controls-overlay-cast-button {
 
 @media screen and (orientation:portrait) {
   .gal {
-    width: 100%;
-    min-width: 100%;
+    /* width: 100%; */
+    /* min-width: 100%; */
     margin: unset;
-    max-height: 55%;
+    /* max-height: 55%; */
     /* margin-bottom: 10em; */
     /* margin-top: 5em; */
   }
