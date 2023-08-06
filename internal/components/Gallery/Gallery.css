@@ -133,6 +133,7 @@ video::-internal-media-controls-overlay-cast-button {
   }
   .selectedPic {
     /* border-radius: 0; */
+    max-height: 14em;
   }
   .selectedPicImg {
     /* border-radius: 0; */
